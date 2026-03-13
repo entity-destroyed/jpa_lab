@@ -22,6 +22,7 @@ public class JpaLabApplication implements CommandLineRunner {
     static void main(String[] args) {
         SpringApplication.run(JpaLabApplication.class, args);
     }
+
     @Override
     public void run(String... args) throws Exception {
         Employee employee =
@@ -30,12 +31,11 @@ public class JpaLabApplication implements CommandLineRunner {
                         LocalDateTime.of(2026, 1, 1,
                                 8, 0, 0));
         Company company = new Company(null, "ACME Kft.");
-        company.getEmployees().add(employee);
+        employee.setCompany(company);
         companyDao.create(company);
-        Company retrievedCompany = companyDao.findById(company.getId());
-        System.out.println("Employees of company " + retrievedCompany.getName() + ":" +
-                retrievedCompany.getEmployees());
-
+        employeeDao.create(employee);
+        Company retrievedCompany = companyDao.findByIdWithEmployees(company.getId());
+        System.out.println("Employees of company " + retrievedCompany.getName() + ":" + retrievedCompany.getEmployees());
     }
 }
 

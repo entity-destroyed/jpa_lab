@@ -1,38 +1,27 @@
 package hu.bme.aut.jpa.jpa_lab.dao;
 
 import hu.bme.aut.jpa.jpa_lab.entity.Employee;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public class EmployeeDao {
+//todo ms sql servert konfigurálni!
 
-    @PersistenceContext
-    private EntityManager em;
-    @Transactional
-    public Employee create(Employee employee) {
-        em.persist(employee);
-        return employee;
+@Repository
+public class EmployeeDao extends AbstractDao<Employee>{
+
+    public EmployeeDao() {
+        super(Employee.class);
     }
-    @Transactional
-    public Employee update(Employee employee) {
-        return em.merge(employee);
-    }
-    @Transactional
-    public void deleteById(Long id) {
-        Employee employee = em.find(Employee.class, id);
-        em.remove(employee);
-    }
-    public Employee findById(Long id) {
-        return em.find(Employee.class, id);
-    }
-    public List<Employee> findAll() {
-        return em.createQuery("select e from Employee e",
-                Employee.class).getResultList();
+
+    public List<Employee> search(String keyword, int lowerSalaryLimit, int upperSalaryLimit) {
+        return em.createQuery("select e from Employee e where " +
+                "lower(e.name) like LOWER(CONCAT('%', :keyword, '%')) and " +
+                "e.salary between :lowerSalaryLimit and :upperSalaryLimit",  Employee.class)
+            .setParameter("keyword", keyword)
+            .setParameter("lowerSalaryLimit", lowerSalaryLimit)
+            .setParameter("upperSalaryLimit", upperSalaryLimit)
+            .getResultList();
     }
 }
 
