@@ -1,0 +1,88 @@
+databaseChangeLog:
+- logicalFilePath: 000000000000-create-schema.yaml
+- changeSet:
+    id: 1773751364307-1
+    author: Spring (generated)
+    changes:
+    - createSequence:
+        sequenceName: COMPANY_SEQ
+- changeSet:
+    id: 1773751364307-2
+    author: Spring (generated)
+    changes:
+    - createSequence:
+        sequenceName: EMPLOYEE_SEQ
+- changeSet:
+    id: 1773751364307-3
+    author: Spring (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: SYS_PK_10091
+            name: ID
+            type: BIGINT
+        - column:
+            name: NAME
+            type: VARCHAR(255)
+        tableName: COMPANY
+- changeSet:
+    id: 1773751364307-4
+    author: Spring (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: SYS_PK_10095
+            name: ID
+            type: BIGINT
+        - column:
+            name: JOB
+            type: VARCHAR(255)
+        - column:
+            name: NAME
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: SALARY
+            type: INT
+        - column:
+            name: WORK_START
+            type: TIMESTAMP
+        - column:
+            name: COMPANY_ID
+            type: BIGINT
+        tableName: EMPLOYEE
+- changeSet:
+    id: 1773751364307-5
+    author: Spring (generated)
+    changes:
+    - createIndex:
+        columns:
+        - column:
+            name: COMPANY_ID
+        indexName: FK5V50ED2BJH60N1GC7IFUXMGF4
+        tableName: EMPLOYEE
+- changeSet:
+    id: 1773751364307-6
+    author: Spring (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: COMPANY_ID
+        baseTableName: EMPLOYEE
+        constraintName: FK5V50ED2BJH60N1GC7IFUXMGF4
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: ID
+        referencedTableName: COMPANY
+        validate: true
+
