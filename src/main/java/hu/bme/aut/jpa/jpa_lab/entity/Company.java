@@ -10,15 +10,27 @@ public class Company {
 
     @Id
     @GeneratedValue
+    @SequenceGenerator(name = "company_seq", allocationSize = 1)
     private Long id;
 
     private String name;
+
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
     private List<Employee> employees = new ArrayList<>();
 
     public Company() {}
 
+    public Company(Long id, String name, List<Employee> employees) {
+        this.id = id;
+        this.name = name;
+        this.employees = employees;
+    }
+
+    public Company(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -36,10 +48,6 @@ public class Company {
         this.name = name;
     }
 
-    public Company(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public List<Employee> getEmployees() {
         return employees;
