@@ -68,6 +68,7 @@
                 <configuration>
                     <propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
                     <outputChangeLogFile>src/main/resources/db/changelog/update.yaml</outputChangeLogFile>
+                    <changeLogFile>src/main/resources/db/changelog/000000000000-create-schema.yaml</changeLogFile>
                 </configuration>
             </plugin>
         </plugins>

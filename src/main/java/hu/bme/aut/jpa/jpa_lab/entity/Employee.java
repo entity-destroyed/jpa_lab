@@ -9,24 +9,29 @@ public class Employee {
 
     @Id
     @GeneratedValue
+    @SequenceGenerator(name = "employee_seq", allocationSize = 1)
     private Long id;
     private String name;
     private String job;
     private int salary;
     private LocalDateTime workStart;
 
+    private String taxId;
+
     @ManyToOne
     private Company company;
 
-    public Employee(Long id, String name, String job, int salary, LocalDateTime workStart) {
+    public Employee(Long id, String name, String job, int salary, LocalDateTime workStart, String taxId) {
         this.id = id;
         this.name = name;
         this.job = job;
         this.salary = salary;
         this.workStart = workStart;
+        this.taxId = taxId;
     }
 
-    public Employee() {}
+    public Employee() {
+    }
 
     public Long getId() {
         return id;
@@ -74,6 +79,14 @@ public class Employee {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public String getTaxId() {
+        return taxId;
+    }
+
+    public void setTaxId(String taxId) {
+        this.taxId = taxId;
     }
 
     @Override

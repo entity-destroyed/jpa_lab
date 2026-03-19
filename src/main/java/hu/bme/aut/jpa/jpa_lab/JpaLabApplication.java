@@ -28,9 +28,9 @@ public class JpaLabApplication implements CommandLineRunner {
     @Override
     public void run(String @NonNull ... args) throws Exception {
         Stream.of(
-                new Employee(null, "Bármi Áron", "Assistant sales representative", 380_000, LocalDateTime.of(2026, 1, 1, 8, 0, 0)),
-                new Employee(null, "Cserepes Virág", "HR advisor", 450_000, LocalDateTime.of(2025, 5, 1, 8, 0, 0)),
-                new Employee(null, "Nemoda Buda", "Senior product manager", 850_000, LocalDateTime.of(2021, 10, 15, 8, 0, 0))
+                new Employee(null, "Bármi Áron", "Assistant sales representative", 380_000, LocalDateTime.of(2026, 1, 1, 8, 0, 0), "ABCD1234"),
+                new Employee(null, "Cserepes Virág", "HR advisor", 450_000, LocalDateTime.of(2025, 5, 1, 8, 0, 0), "AAA111"),
+                new Employee(null, "Nemoda Buda", "Senior product manager", 850_000, LocalDateTime.of(2021, 10, 15, 8, 0, 0), "BBB222")
         ).forEach(employeeRepository::save);
         System.out.println(employeeRepository.findAll());
         System.out.println("Number of all employees: " + employeeRepository.count());

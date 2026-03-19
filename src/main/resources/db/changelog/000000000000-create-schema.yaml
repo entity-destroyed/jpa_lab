@@ -1,20 +1,20 @@
 databaseChangeLog:
 - logicalFilePath: 000000000000-create-schema.yaml
 - changeSet:
-    id: 1773751364307-1
-    author: Spring (generated)
+    id: 1773943623802-1
+    author: Asus (generated)
     changes:
     - createSequence:
         sequenceName: COMPANY_SEQ
 - changeSet:
-    id: 1773751364307-2
-    author: Spring (generated)
+    id: 1773943623802-2
+    author: Asus (generated)
     changes:
     - createSequence:
         sequenceName: EMPLOYEE_SEQ
 - changeSet:
-    id: 1773751364307-3
-    author: Spring (generated)
+    id: 1773943623802-3
+    author: Asus (generated)
     changes:
     - createTable:
         columns:
@@ -30,8 +30,8 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: COMPANY
 - changeSet:
-    id: 1773751364307-4
-    author: Spring (generated)
+    id: 1773943623802-4
+    author: Asus (generated)
     changes:
     - createTable:
         columns:
@@ -39,7 +39,7 @@ databaseChangeLog:
             constraints:
               nullable: false
               primaryKey: true
-              primaryKeyName: SYS_PK_10095
+              primaryKeyName: SYS_PK_10094
             name: ID
             type: BIGINT
         - column:
@@ -61,8 +61,8 @@ databaseChangeLog:
             type: BIGINT
         tableName: EMPLOYEE
 - changeSet:
-    id: 1773751364307-5
-    author: Spring (generated)
+    id: 1773943623802-5
+    author: Asus (generated)
     changes:
     - createIndex:
         columns:
@@ -71,8 +71,8 @@ databaseChangeLog:
         indexName: FK5V50ED2BJH60N1GC7IFUXMGF4
         tableName: EMPLOYEE
 - changeSet:
-    id: 1773751364307-6
-    author: Spring (generated)
+    id: 1773943623802-6
+    author: Asus (generated)
     changes:
     - addForeignKeyConstraint:
         baseColumnNames: COMPANY_ID

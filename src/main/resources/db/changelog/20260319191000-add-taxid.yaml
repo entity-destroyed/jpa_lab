@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-employee-taxid
+      author: John Doe
+      changes:
+        - addColumn:
+            tableName: EMPLOYEE
+            columns:
+              - column:
+                  name: TAX_ID
+                  type: VARCHAR(255)
